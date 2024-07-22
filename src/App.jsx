@@ -35,15 +35,15 @@ function App() {
     },
   ]);
 
-  const markPokemon = (item) => {
-    if (alreadyMarked.has(item.id)) {
+  const markPokemon = (id) => {
+    if (alreadyMarked.has(id)) {
       setAlreadyMarked(new Set());
       setCurrentScore(0);
       return;
     }
 
     const newSet = new Set(alreadyMarked);
-    newSet.add(item.id);
+    newSet.add(id);
 
     setAlreadyMarked(newSet);
 

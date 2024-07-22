@@ -2,12 +2,23 @@
 import { Card } from "./Card";
 import '../styles/CardsGame.css'
 
+function shuffleArray(array) {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; --i) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+
+    return newArray;
+}
+
 export function CardsGame({
     cardsList,
     markCard,
     score,
     highestScore
 }) {
+    const cards = shuffleArray(cardsList);
     return (
         <div className="cards-game">
             <header>
@@ -18,7 +29,7 @@ export function CardsGame({
             </header>
             <div className="cards-container">
                 <ul className="cards-list">
-                    {cardsList.map(card => <Card key={card.id} item={card} onClick={() => markCard(card)} />)}
+                    {cards.map(card => <Card key={card.id} item={card} onClick={() => markCard(card.id)} />)}
                 </ul>
 
             </div>

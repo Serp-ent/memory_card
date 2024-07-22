@@ -9,7 +9,7 @@
   grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
   padding: 0;
 
-  gap: 16px;
+  gap: 24px;
 }
 
 header {

@@ -11,6 +11,7 @@
 
   overflow: hidden;
 
+  will-change: background-color, transform;
 
   transition: transform 0.5s,
     box-shadow 0.5s;

@@ -6,8 +6,11 @@ export function Card({ item }) {
         <li>
             <button>
                 <div className='card-item'>
-                    <div>
+                    <div className='card-img-wrapper'>
                         <img className='card-img' src={item.imgUrl} />
+                        <div className='pokeball-button'>
+                            <div className='pokeball-button-inneR'></div>
+                        </div>
                     </div>
                     <div className='card-label'>
                         <h6>{item.name}</h6>

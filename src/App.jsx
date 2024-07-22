@@ -1,35 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { CardsGame } from "./components/CardsGame";
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  // TODO: fetch 20 pokemon informations to state
+  const [pokemonList, setPokemonList] = useState([
+    { name: 'name1', imgUrl: null, id: crypto.randomUUID() },
+    { name: 'name2', imgUrl: null, id: crypto.randomUUID() },
+    { name: 'name3', imgUrl: null, id: crypto.randomUUID() },
+    { name: 'name4', imgUrl: null, id: crypto.randomUUID() },
+    { name: 'name5', imgUrl: null, id: crypto.randomUUID() },
+  ]);
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <CardsGame cardsList={pokemonList} />
     </>
-  )
+  );
 }
 
 export default App

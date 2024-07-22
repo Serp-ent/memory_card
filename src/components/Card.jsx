@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import '../styles/Card.css'
 
-export function Card({ item , onClick}) {
+export function Card({ item, onClick }) {
     return (
         <li>
             <button onClick={onClick}>
@@ -13,7 +13,7 @@ export function Card({ item , onClick}) {
                         </div>
                     </div>
                     <div className='card-label'>
-                        <h6>{item.name} {item.wasClicked && '*'}</h6>
+                        <h6>{item.name}</h6>
                     </div>
                 </div>
             </button>

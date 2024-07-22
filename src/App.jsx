@@ -3,6 +3,14 @@ import { useState } from "react";
 
 function App() {
   // TODO: fetch 20 pokemon informations to state
+  const [currentScore, setCurrentScore] = useState(0);
+
+  const incrementScore = () => {
+    setCurrentScore(score => score + 1);
+    // TODO: if score > highest one then change other one
+
+  }
+
   const [pokemonList, setPokemonList] = useState([
     {
       wasClicked: false,
@@ -46,7 +54,12 @@ function App() {
 
   return (
     <>
-      <CardsGame cardsList={pokemonList} markCard={markPokemon} />
+      <CardsGame 
+      cardsList={pokemonList} 
+      markCard={markPokemon} 
+      score={currentScore}
+      incrementScore={incrementScore}
+      />
     </>
   );
 }

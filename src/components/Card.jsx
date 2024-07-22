@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import '../styles/Card.css'
 
-export function Card({ item }) {
+export function Card({ item , onClick}) {
     return (
         <li>
-            <button>
+            <button onClick={onClick}>
                 <div className='card-item'>
                     <div className='card-img-wrapper'>
                         <img className='card-img' src={item.imgUrl} />
@@ -13,7 +13,7 @@ export function Card({ item }) {
                         </div>
                     </div>
                     <div className='card-label'>
-                        <h6>{item.name}</h6>
+                        <h6>{item.name} {item.wasClicked && '*'}</h6>
                     </div>
                 </div>
             </button>

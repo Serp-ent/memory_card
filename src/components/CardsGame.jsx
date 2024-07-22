@@ -2,7 +2,7 @@
 import { Card } from "./Card";
 import '../styles/CardsGame.css'
 
-export function CardsGame({ cardsList }) {
+export function CardsGame({ cardsList, markCard }) {
     return (
         <div className="cards-game">
             <header>
@@ -11,7 +11,7 @@ export function CardsGame({ cardsList }) {
             </header>
             <div className="cards-container">
                 <ul className="cards-list">
-                    {cardsList.map(card => <Card key={card.id} item={card} />)}
+                    {cardsList.map(card => <Card key={card.id} item={card} onClick={() => markCard(card)} />)}
                 </ul>
 
             </div>

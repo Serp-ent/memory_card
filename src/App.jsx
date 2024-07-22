@@ -4,6 +4,7 @@ import { useState } from "react";
 function App() {
   // TODO: fetch 20 pokemon informations to state
   const [currentScore, setCurrentScore] = useState(0);
+  const [highestScore, setHighestScore] = useState(currentScore);
   const [alreadyMarked, setAlreadyMarked] = useState(new Set());
 
   const [pokemonList, setPokemonList] = useState([
@@ -45,7 +46,12 @@ function App() {
     newSet.add(item.id);
 
     setAlreadyMarked(newSet);
-    setCurrentScore(score => score + 1);
+
+    const newScore = currentScore + 1;
+    setCurrentScore(newScore);
+    if (newScore > highestScore) {
+      setHighestScore(newScore);
+    }
   }
 
   return (
@@ -54,6 +60,7 @@ function App() {
         cardsList={pokemonList}
         markCard={markPokemon}
         score={currentScore}
+        highestScore={highestScore}
       />
     </>
   );

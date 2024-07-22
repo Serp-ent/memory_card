@@ -25,4 +25,7 @@ li button {
   border: none;
   background-color: inherit;
   width: 100%;
+
+  cursor: pointer;
+  padding: 0;
 }

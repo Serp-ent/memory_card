@@ -1,5 +1,6 @@
 import { CardsGame } from "./components/CardsGame";
 import { useState } from "react";
+import { useEffect } from "react";
 
 function App() {
   // TODO: fetch 20 pokemon informations to state
@@ -7,33 +8,36 @@ function App() {
   const [highestScore, setHighestScore] = useState(currentScore);
   const [alreadyMarked, setAlreadyMarked] = useState(new Set());
 
-  const [pokemonList, setPokemonList] = useState([
-    {
-      name: 'name1',
-      imgUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png',
-      id: crypto.randomUUID()
-    },
-    {
-      name: 'name2',
-      imgUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png',
-      id: crypto.randomUUID()
-    },
-    {
-      name: 'name3',
-      imgUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png',
-      id: crypto.randomUUID()
-    },
-    {
-      name: 'name4',
-      imgUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png',
-      id: crypto.randomUUID()
-    },
-    {
-      name: 'name5',
-      imgUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png',
-      id: crypto.randomUUID()
-    },
-  ]);
+  const [pokemonList, setPokemonList] = useState([]);
+
+  useEffect(() => {
+    const fetchPokemonData = async () => {
+      const fetchedPokemons = [];
+
+      for (let i = 1; i <= 20; ++i) {
+        try {
+          const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
+          const pokemon = await response.json();
+
+          console.log(pokemon);
+          const importantPokemonInfo = {
+            id: pokemon.id,
+            name: pokemon.name,
+            imgUrl: pokemon.sprites.other.dream_world.front_default,
+          };
+
+          fetchedPokemons.push(importantPokemonInfo);
+        } catch (error) {
+          console.log(`Error fetching pokemon data: ${error}`);
+        }
+      }
+
+
+      setPokemonList(fetchedPokemons);
+    }
+
+    fetchPokemonData();
+  }, []);
 
   const markPokemon = (id) => {
     if (alreadyMarked.has(id)) {
